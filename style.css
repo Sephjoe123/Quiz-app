@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: rgb(58, 85, 237);  
+    font-family: Poppins;
+}
+
+#container{
+    background-color: #fff;
+    width: 30rem;
+    height: 25rem;
+    margin: 15vh auto;
+    padding: 20px;
+    position: relative;
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    display: block;
+    margin:  10px;
+    border: 1px solid rgb(204, 195, 195);
+    padding: 25px;
+    background-color: #fff;
+    color: #000;
+    text-align: left;
+}
+button:hover{
+    background-color: rgb(43, 42, 42);
+    color: #fff;
+}
+.question-area{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 88%;
+}
+hr{
+    margin-top: 20px;
+}
+.next-button{
+    width: 20%;
+    padding: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background-color: rgb(58, 85, 237);  
+    color: #fff;
+    text-align: center;
+}
+.question-text{
+    position: absolute;
+    top: 20%;
+    left: 30px;
+}
+i{
+    float: right;
+}
