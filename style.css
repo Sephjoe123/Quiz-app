@@ -76,8 +76,6 @@ i{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    
-
 } 
 
 .start-modal h3{
@@ -166,3 +164,18 @@ position: absolute;
 .none{
     display: none;
 }
+@media screen and (max-width: 520px) {
+    #container{
+        width: 90%;
+    }
+    .rules-section{
+        width: 95%;
+    }
+    .rules-section hr{
+        width: 350px;
+    }
+    .rules-btn button{
+        bottom: 15px;
+    }
+  }
+  
