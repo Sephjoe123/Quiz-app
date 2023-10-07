@@ -61,9 +61,11 @@ function chooseAnswer(previousBtn) {
 }
 
 function UpdateQuizQuestion(questionText, previousBtn) {
+
   Nextbtn.addEventListener("click", () => {
     if (numCount < Questions.length - 1) {
       numCount++;
+      document.querySelector(".question-count").innerText = numCount + 1;
       questionText.innerText = Questions[numCount].question;
       previousBtn.style.display = "none"
       for (let i = 0; i < options.length; i++) {
