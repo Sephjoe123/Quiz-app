@@ -69,13 +69,7 @@ i{
 .start-modal{
     width: 400px;
     height: 200px;
-    background-color: #fff;
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
 } 
 
 .start-modal h3{
@@ -84,7 +78,7 @@ i{
     margin-top: 3rem;
 }
 
-.start-modal button{
+.start-modal button, .result-modal button{
   padding: 8px 25px;
   border: none;
   background-color: rgb(58, 85, 237); 
@@ -92,27 +86,17 @@ i{
   color: #fff;
   margin: 0 auto;
   display: block;
-  
 
 }
-.start-modal button:hover{
+.start-modal button:hover, .result-modal button:hover{
     transform: scale(1.05);
+    transition: ease-in .2s;
 }
 .rules-section{
     width: 500px;
-    height: 450px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: start;
+    height: 400px;
     display: none;
-    
-    
+
 }
 .rules-section h1{
     position: absolute;
@@ -126,7 +110,7 @@ i{
 
 .rules-section ul{
     position: relative;
-    top: 80px;
+    top: 70px;
     left: 10px;
 }
 .rules-section li{
@@ -141,7 +125,7 @@ border: none;
 background-color: rgb(58, 85, 237); 
 font-size: 0.9rem;
 color: #fff;
-bottom:  40px;
+bottom: 30px;
 position: absolute;
 
 }
@@ -158,6 +142,36 @@ position: absolute;
     transform: scale(1.05);
     transition: ease-in-out .3s;
 }
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+}
+
+.result-modal{
+    width: 400px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.result-modal h1{
+    font-size: 1.2rem;
+}
+.result-modal p{
+    font-size: 0.9rem;
+    line-height: 0.5rem;
+}
+
+.result-modal img{
+    width: 100px;
+}
+.result-modal button{
+margin-top: 2rem;
+}
 .active{
     display: block;
 }
@@ -170,12 +184,20 @@ position: absolute;
     }
     .rules-section{
         width: 95%;
+        height: 450px;
     }
     .rules-section hr{
         width: 350px;
+        
+    }
+    .rules-section ul{
+        max-width: 90%;
     }
     .rules-btn button{
         bottom: 15px;
+    }
+    .start-modal{
+        width: 90%;
     }
   }
   
