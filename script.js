@@ -5,6 +5,7 @@ const startModal = document.querySelector(".start-modal");
 const options = Array.from(document.querySelectorAll(".quizbtn"));
 const Nextbtn = document.querySelector(".next-button");
 const previousBtn = document.querySelector(".previous-btn");
+const resultModal = document.querySelector(".result-modal");
 let numCount = 0;
 
 function startGame() {
@@ -30,12 +31,7 @@ function proceed(rulesSection) {
     }
   });
 
-  proceedBtn.addEventListener("click", () => {
-    if (rulesSection.classList.contains("active")) {
-      rulesSection.classList.remove("active");
-      quizContainer.style.display = "block";
-    }
-  });
+  StartQuiz(rulesSection)
 
   previousBtn.addEventListener("click", () => {
     if (numCount <= 0) {
@@ -47,6 +43,20 @@ function proceed(rulesSection) {
 
   chooseAnswer(previousBtn)
 }
+
+function StartQuiz(rulesSection){
+  proceedBtn.addEventListener("click", () => {
+    if (rulesSection.classList.contains("active")) {
+      rulesSection.classList.remove("active");
+      quizContainer.style.display = "block";
+    }
+    else{
+      quizContainer.style.display = "block"
+    }
+  });
+  validateAnswers(numCount)
+}
+
 
 function chooseAnswer(previousBtn) {
   const questionText = document.querySelector(".question-text");
@@ -60,7 +70,7 @@ function chooseAnswer(previousBtn) {
   UpdateQuizQuestion(questionText,previousBtn);
 }
 
-function UpdateQuizQuestion(questionText, previousBtn) {
+function UpdateQuizQuestion(questionText,previousBtn) {
 
   Nextbtn.addEventListener("click", () => {
     if (numCount < Questions.length - 1) {
@@ -74,8 +84,34 @@ function UpdateQuizQuestion(questionText, previousBtn) {
         options[2].innerText = Questions[numCount].options[2];
         options[3].innerText = Questions[numCount].options[3];
       }
+    validateAnswers(numCount)
     }
+
+    else if(numCount == 3){
+      quizContainer.style.display = "none";
+      resultModal.classList.remove("none");
+
+    }
+ 
   });
   
 }
 
+function validateAnswers(num) {
+let answer = Questions[num].correctAnswer;
+
+}
+
+
+
+// function showResult(){
+//  const restartBtn = document.querySelector(".restart")
+//  restartBtn.addEventListener("click",() =>{
+//  resultModal.style.display = "none";
+
+//  quizContainer.style.display = "block";
+//  UpdateQuizQuestion()
+//  })
+// }
+
+// showResult()
