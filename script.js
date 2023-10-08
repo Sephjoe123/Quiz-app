@@ -54,21 +54,21 @@ function StartQuiz(rulesSection){
       quizContainer.style.display = "block"
     }
   });
-  validateAnswers(numCount)
+  
 }
-
 
 function chooseAnswer(previousBtn) {
   const questionText = document.querySelector(".question-text");
   questionText.innerText = Questions[numCount].question;
+
+  // Set the text of each option button based on the current question
   for (let i = 0; i < options.length; i++) {
-    options[0].innerText = Questions[numCount].options[0];
-    options[1].innerText = Questions[numCount].options[1];
-    options[2].innerText = Questions[numCount].options[2];
-    options[3].innerText = Questions[numCount].options[3];
+    options[i].innerText = Questions[numCount].options[i];
   }
-  UpdateQuizQuestion(questionText,previousBtn);
+
+  UpdateQuizQuestion(questionText, previousBtn);
 }
+
 
 function UpdateQuizQuestion(questionText,previousBtn) {
 
@@ -79,12 +79,11 @@ function UpdateQuizQuestion(questionText,previousBtn) {
       questionText.innerText = Questions[numCount].question;
       previousBtn.style.display = "none"
       for (let i = 0; i < options.length; i++) {
-        options[0].innerText = Questions[numCount].options[0];
-        options[1].innerText = Questions[numCount].options[1];
-        options[2].innerText = Questions[numCount].options[2];
-        options[3].innerText = Questions[numCount].options[3];
+        options[i].innerText = Questions[numCount].options[i];
+        
       }
-    validateAnswers(numCount)
+    
+    validateAnswers(numCount,options[0], options[1],options[2], options[3])
     }
 
     else if(numCount == 3){
@@ -96,10 +95,10 @@ function UpdateQuizQuestion(questionText,previousBtn) {
   });
   
 }
-
-function validateAnswers(num) {
-let answer = Questions[num].correctAnswer;
-
+function validateAnswers(num, op1, op2, op3, op4) {
+  
+  
+  // Repeat this logic for op2, op3, and op4 if needed
 }
 
 
