@@ -18,8 +18,7 @@ body{
     flex-direction: column;
     display: none;
 }
-
-#container .quizbtn{
+ .quizbtn{
     display: block;
     margin:  10px;
     border: 1px solid rgb(204, 195, 195);
@@ -30,7 +29,7 @@ body{
     width: 95%;
     
 }
-#container .quizbtn:hover{
+.quizbtn:hover{
     background-color: rgb(43, 42, 42);
     color: #fff;
     transition: ease-in .2s;
@@ -178,6 +177,11 @@ margin-top: 2rem;
 .none{
     display: none;
 }
+.bgColor {
+    background-color: green; /* Set the background color to green when the class is applied */
+    color: white; /* Optionally, set the text color to white for better visibility */
+  }
+  
 @media screen and (max-width: 520px) {
     #container{
         width: 90%;
