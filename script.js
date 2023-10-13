@@ -9,7 +9,8 @@ const resultModal = document.querySelector(".result-modal");
 let numCount = 0;
 let Quecount = 0;
 
-function startGame() {
+
+function startGame(numCount) {
   const startBtn = document.querySelector(".start-btn");
   const rulesSection = document.querySelector(".rules-section");
   startBtn.addEventListener("click", () => {
@@ -19,10 +20,10 @@ function startGame() {
     }
   });
   proceed(rulesSection);
+
 }
 
-startGame();
-
+startGame()
 function proceed(rulesSection) {
   returnBtn.addEventListener("click", () => {
     if (rulesSection.classList.contains("active")) {
@@ -30,15 +31,15 @@ function proceed(rulesSection) {
       startModal.classList.remove("none");
       startModal.classList.add("active");
     }
+   
   });
 
   StartQuiz(rulesSection);
 
   previousBtn.addEventListener("click", () => {
-    if (numCount <= 0) {
-      quizContainer.style.display = "none";
-      rulesSection.classList.add("active");
-    } else {
+    if(quizContainer.style.display = "block"){
+      rulesSection.classList.add("active")
+      quizContainer.style.display = "none"
     }
   });
 
@@ -48,26 +49,24 @@ function proceed(rulesSection) {
 function StartQuiz(rulesSection) {
   proceedBtn.addEventListener("click", () => {
     if (rulesSection.classList.contains("active")) {
+      console.log(numCount)
       rulesSection.classList.remove("active");
       quizContainer.style.display = "block";
+      showQuestion(numCount)
     } else {
       quizContainer.style.display = "block";
     }
+
   });
 }
 
 function chooseAnswer(previousBtn) {
   const questionText = document.querySelector(".question-text");
   questionText.innerText = Questions[numCount].question;
-
   UpdateQuizQuestion(questionText, previousBtn);
 }
 
-function chooseAnswer(previousBtn) {
-  const questionText = document.querySelector(".question-text");
-  questionText.innerText = Questions[numCount].question;
-  UpdateQuizQuestion(questionText, previousBtn);
-}
+
 
 function UpdateQuizQuestion(questionText, previousBtn) {
   Nextbtn.addEventListener("click", () => {
@@ -76,20 +75,35 @@ function UpdateQuizQuestion(questionText, previousBtn) {
       document.querySelector(".question-count").innerText = numCount + 1;
       questionText.innerText = Questions[numCount].question;
       previousBtn.style.display = "none";
+    
     }
+  else if(Questions.length == 1){
+    numCount = 0;
+  }
+    console.log(numCount)
+    showQuestion(numCount)
+
   });
 }
-function validateAnswers(numCount, QuizOptions) {
- 
+
+function showQuestion (count){
+let option =`<div class = "quizbtn">` + Questions[count].options[0]  + `</div>` +
+`<div class = "quizbtn">` + Questions[count].options[1]  + `</div>` +
+`<div class = "quizbtn">` + Questions[count].options[2]  + `</div>` +
+`<div class = "quizbtn">` + Questions[count].options[3]  + `</div>` 
+
+ document.querySelector(".quiz").innerHTML = option;
+ validateAnswers(option)
 }
 
-function test(){
-  UserOptions.forEach(item =>{
-    item.addEventListener("click", () =>{
-      console.log(Questions[numCount].options)
-    })
-
+function validateAnswers(option) {
+const QuizOption = document.querySelectorAll(".quizbtn")
+for(let i = 0; i < QuizOption.length; i++){
+  QuizOption[i].addEventListener("click",(e) =>{
+    let answer = e.target;
+    if(answer.innerText == Questions[numCount].correctAnswer){
+      answer.style.backgroundColor = "green"
+    }
   })
 }
-
-test()
+}
