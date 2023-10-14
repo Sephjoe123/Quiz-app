@@ -34,7 +34,7 @@ function proceed(rulesSection) {
   StartQuiz(rulesSection);
 
   previousBtn.addEventListener("click", () => {
-    if ((quizContainer.style.display === "block")) {
+    if (quizContainer.style.display === "block") {
       rulesSection.classList.add("active");
       quizContainer.style.display = "none";
     }
@@ -63,17 +63,15 @@ function chooseAnswer(previousBtn) {
 
 function UpdateQuizQuestion(questionText, previousBtn) {
   Nextbtn.addEventListener("click", () => {
-    if (numCount < Questions.length - 1 ) {
+    if (numCount < Questions.length - 1) {
       numCount++;
       document.querySelector(".question-count").innerText = numCount + 1;
       questionText.innerText = Questions[numCount].question;
       previousBtn.style.display = "none";
-    } 
-    else{
-      updateScore()
+    } else {
+      updateScore();
     }
     showQuestion(numCount);
-  
   });
 }
 
@@ -106,19 +104,18 @@ function validateAnswers() {
       let userChoice = e.target;
 
       if (userChoice.innerText === answer) {
-        scoreCount++
+        scoreCount++;
         userChoice.style.backgroundColor = "rgb(25,135,84)";
-        console.log(scoreCount)
+        console.log(scoreCount);
       } else if (userChoice.innerText !== answer) {
         userChoice.style.backgroundColor = "rgb(237,67,55)";
-        userChoice.style.color = "#fff"
+        userChoice.style.color = "#fff";
       }
 
-      
       QuizOption.forEach((option) => {
         if (option.innerText === answer) {
           option.style.backgroundColor = "rgb(25,135,84)";
-          option.style.color = "#fff"
+          option.style.color = "#fff";
         }
         option.disabled = true;
       });
@@ -126,14 +123,30 @@ function validateAnswers() {
   }
 }
 
-function updateScore(){
+function updateScore() {
+  quizContainer.style.display = "none";
+  resultModal.classList.remove("none");
+  resultModal.classList.add("active");
+
+  let ScoreValue = document.querySelector(".correct-question");
+  ScoreValue.innerText = scoreCount;
+
+  let scorePercentage = document.querySelector(".percentage")
+  let scoreNumPercentage =  scoreCount / Questions.length * 100;
+  scorePercentage.innerText = scoreNumPercentage + "%"
   
-quizContainer.style.display = "none";
-resultModal.classList.remove("none");
-resultModal.classList.add("active");
-
-let ScoreValue = document.querySelector(".correct-question");
-ScoreValue.innerText = scoreCount;
-console.log(ScoreValue)
-
 }
+
+function restaerQuiz(){
+let restartBtn = document.querySelector(".restart");
+restartBtn.addEventListener("click", () =>{
+resultModal.style.display = "none";
+quizContainer.style.display = "block"
+numCount = 0;
+StartQuiz()
+UpdateQuizQuestion()
+showQuestion()
+})
+}
+
+restaerQuiz()
