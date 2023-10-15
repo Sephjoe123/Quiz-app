@@ -6,8 +6,9 @@ const UserOptions = Array.from(document.getElementsByClassName("quizbtn"));
 const Nextbtn = document.querySelector(".next-button");
 const previousBtn = document.querySelector(".previous-btn");
 const resultModal = document.querySelector(".result-modal");
-let numCount = 0;
+let questionText = document.querySelector(".question-text");
 let scoreCount = 0;
+let numCount = 0;
 
 function startGame() {
   const startBtn = document.querySelector(".start-btn");
@@ -56,21 +57,24 @@ function StartQuiz(rulesSection) {
 }
 
 function chooseAnswer(previousBtn) {
-  const questionText = document.querySelector(".question-text");
   questionText.innerText = Questions[numCount].question;
   UpdateQuizQuestion(questionText, previousBtn);
 }
 
+
 function UpdateQuizQuestion(questionText, previousBtn) {
+  
   Nextbtn.addEventListener("click", () => {
     if (numCount < Questions.length - 1) {
       numCount++;
       document.querySelector(".question-count").innerText = numCount + 1;
       questionText.innerText = Questions[numCount].question;
       previousBtn.style.display = "none";
-    } else {
+    }  else {
       updateScore();
+    
     }
+
     showQuestion(numCount);
   });
 }
@@ -106,7 +110,7 @@ function validateAnswers() {
       if (userChoice.innerText === answer) {
         scoreCount++;
         userChoice.style.backgroundColor = "rgb(25,135,84)";
-        console.log(scoreCount);
+      
       } else if (userChoice.innerText !== answer) {
         userChoice.style.backgroundColor = "rgb(237,67,55)";
         userChoice.style.color = "#fff";
@@ -137,16 +141,21 @@ function updateScore() {
   
 }
 
-function restaerQuiz(){
-let restartBtn = document.querySelector(".restart");
-restartBtn.addEventListener("click", () =>{
-resultModal.style.display = "none";
-quizContainer.style.display = "block"
-numCount = 0;
-StartQuiz()
-UpdateQuizQuestion()
-showQuestion()
-})
-}
+function restartQuiz() {
+  let restartBtn = document.querySelector(".restart");
+  restartBtn.addEventListener("click", () => {
+    resultModal.style.display = "none";
+    quizContainer.style.display = "block";
+    scoreCount = 0;
+    numCount = 0;
 
-restaerQuiz()
+    // Update the question count to start from 1
+ 
+    showQuestion(numCount);
+    location.reload()
+  }
+)}
+
+
+
+restartQuiz()
