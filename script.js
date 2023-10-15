@@ -7,8 +7,13 @@ const Nextbtn = document.querySelector(".next-button");
 const previousBtn = document.querySelector(".previous-btn");
 const resultModal = document.querySelector(".result-modal");
 let questionText = document.querySelector(".question-text");
+
 let scoreCount = 0;
 let numCount = 0;
+let timerCount = 0;
+let countdown = 10;
+
+let countdownInterval;
 
 function startGame() {
   const startBtn = document.querySelector(".start-btn");
@@ -18,11 +23,13 @@ function startGame() {
       rulesSection.classList.add("active");
       startModal.classList.add("none");
     }
+    document.querySelector(".question-no").innerText = Questions.length;
   });
   proceed(rulesSection);
 }
 
 startGame();
+
 function proceed(rulesSection) {
   returnBtn.addEventListener("click", () => {
     if (rulesSection.classList.contains("active")) {
@@ -53,6 +60,8 @@ function StartQuiz(rulesSection) {
     } else {
       quizContainer.style.display = "block";
     }
+    countdown = 10;
+    QuizTimer();
   });
 }
 
@@ -61,21 +70,24 @@ function chooseAnswer(previousBtn) {
   UpdateQuizQuestion(questionText, previousBtn);
 }
 
-
 function UpdateQuizQuestion(questionText, previousBtn) {
-  
   Nextbtn.addEventListener("click", () => {
     if (numCount < Questions.length - 1) {
       numCount++;
+      countdown = 10;
+
+      if (countdown !== 0) {
+        clearInterval(countdownInterval);
+      }
       document.querySelector(".question-count").innerText = numCount + 1;
       questionText.innerText = Questions[numCount].question;
       previousBtn.style.display = "none";
-    }  else {
+    } else {
       updateScore();
-    
     }
 
     showQuestion(numCount);
+    QuizTimer();
   });
 }
 
@@ -100,17 +112,17 @@ function showQuestion(count) {
 
 function validateAnswers() {
   let answer = Questions[numCount].correctAnswer;
-  const QuizOption = document.querySelectorAll(".quizbtn");
+  let QuizOption = document.querySelectorAll(".quizbtn");
 
   for (let i = 0; i < QuizOption.length; i++) {
     let option = QuizOption[i];
     option.addEventListener("click", (e) => {
+      clearInterval(countdownInterval);
       let userChoice = e.target;
 
       if (userChoice.innerText === answer) {
         scoreCount++;
         userChoice.style.backgroundColor = "rgb(25,135,84)";
-      
       } else if (userChoice.innerText !== answer) {
         userChoice.style.backgroundColor = "rgb(237,67,55)";
         userChoice.style.color = "#fff";
@@ -135,12 +147,34 @@ function updateScore() {
   let ScoreValue = document.querySelector(".correct-question");
   ScoreValue.innerText = scoreCount;
 
-  let scorePercentage = document.querySelector(".percentage")
-  let scoreNumPercentage =  scoreCount / Questions.length * 100;
-  scorePercentage.innerText = scoreNumPercentage + "%"
-  
+  let scorePercentage = document.querySelector(".percentage");
+  let scoreNumPercentage = (scoreCount / Questions.length) * 100;
+  scorePercentage.innerText = scoreNumPercentage.toFixed(2) + "%";
+}
+function QuizTimer() {
+  let QuizOption = document.querySelectorAll(".quizbtn");
+  let timer = document.querySelector(".countdown");
+  timer.innerText = countdown;
+
+  countdownInterval = setInterval(() => {
+    countdown--;
+
+    if (countdown == 0) {
+      pauseTimer();
+      QuizOption.forEach((item) => {
+        if (item.innerText === Questions[numCount].correctAnswer) {
+          item.style.backgroundColor = "rgb(25,135,84)";
+          item.style.color = "#fff";
+        }
+      });
+    }
+    timer.innerText = countdown;
+  }, 1000);
 }
 
+function pauseTimer() {
+  clearInterval(countdownInterval);
+}
 function restartQuiz() {
   let restartBtn = document.querySelector(".restart");
   restartBtn.addEventListener("click", () => {
@@ -149,13 +183,9 @@ function restartQuiz() {
     scoreCount = 0;
     numCount = 0;
 
-    // Update the question count to start from 1
- 
     showQuestion(numCount);
-    location.reload()
-  }
-)}
+    location.reload();
+  });
+}
 
-
-
-restartQuiz()
+restartQuiz();
