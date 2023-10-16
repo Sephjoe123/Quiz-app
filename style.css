@@ -4,6 +4,7 @@ body{
     box-sizing: border-box;
     background-color: rgb(58, 85, 237);  
     font-family: Poppins;
+    overflow: hidden;
 }
 
 #container{
@@ -123,13 +124,13 @@ hr{
 
 .rules-section ul{
     position: relative;
-    top: 70px;
-    left: 10px;
+    top: 50px;
+    left: -5px;
 }
 .rules-section li{
     padding-top: 20px;
     font-size: 1rem;
-    width: 96%;
+    width: 100%;
 }
 
 .rules-btn button{
