@@ -11,10 +11,11 @@ let questionText = document.querySelector(".question-text");
 let scoreCount = 0;
 let numCount = 0;
 let timerCount = 0;
-let countdown = 10;
+let countdown = 10
 
 let countdownInterval;
 
+// starts the game and shoes the rules section of he game
 function startGame() {
   const startBtn = document.querySelector(".start-btn");
   const rulesSection = document.querySelector(".rules-section");
@@ -70,11 +71,12 @@ function chooseAnswer(previousBtn) {
   UpdateQuizQuestion(questionText, previousBtn);
 }
 
+// Function for changing the question to the next on when a user clicks on the next button
 function UpdateQuizQuestion(questionText, previousBtn) {
   Nextbtn.addEventListener("click", () => {
     if (numCount < Questions.length - 1) {
       numCount++;
-      countdown = 10;
+      countdown = 10 
 
       if (countdown !== 0) {
         clearInterval(countdownInterval);
@@ -91,6 +93,7 @@ function UpdateQuizQuestion(questionText, previousBtn) {
   });
 }
 
+//  displays the options for each question
 function showQuestion(count) {
   let option =
     `<button class="quizbtn">` +
@@ -110,6 +113,7 @@ function showQuestion(count) {
   validateAnswers();
 }
 
+//  checks if the user selected the right option / answer
 function validateAnswers() {
   let answer = Questions[numCount].correctAnswer;
   let QuizOption = document.querySelectorAll(".quizbtn");
@@ -139,6 +143,7 @@ function validateAnswers() {
   }
 }
 
+// shows the score result after all questions have been answered
 function updateScore() {
   quizContainer.style.display = "none";
   resultModal.classList.remove("none");
@@ -151,10 +156,12 @@ function updateScore() {
   let scoreNumPercentage = (scoreCount / Questions.length) * 100;
   scorePercentage.innerText = scoreNumPercentage.toFixed(2) + "%";
 }
+
+// allocate 10s for each question to be answere
 function QuizTimer() {
   let QuizOption = document.querySelectorAll(".quizbtn");
   let timer = document.querySelector(".countdown");
-  timer.innerText = countdown;
+  timer.innerText = countdown
 
   countdownInterval = setInterval(() => {
     countdown--;
@@ -165,16 +172,23 @@ function QuizTimer() {
         if (item.innerText === Questions[numCount].correctAnswer) {
           item.style.backgroundColor = "rgb(25,135,84)";
           item.style.color = "#fff";
+          item.disabled = true;
+        }
+        else if(countdown < 10){
+          timerCount + countdown;
+          timer.innerText = `0${countdown}:00`
         }
       });
     }
-    timer.innerText = countdown;
+    timer.innerText = `0${countdown}:00`;
   }, 1000);
 }
 
 function pauseTimer() {
   clearInterval(countdownInterval);
 }
+
+// restart the game by reloading
 function restartQuiz() {
   let restartBtn = document.querySelector(".restart");
   restartBtn.addEventListener("click", () => {
