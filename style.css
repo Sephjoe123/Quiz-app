@@ -3,7 +3,7 @@ body{
     box-sizing: border-box;
     background-color: rgb(58, 85, 237);  
     font-family: Poppins;
-    overflow: hidden;
+    overflow: auto;
     margin : 0;
     padding: 0;
 }
