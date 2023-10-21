@@ -4,8 +4,7 @@ body{
     background-color: rgb(58, 85, 237);  
     font-family: Poppins;
     overflow: auto;
-    margin : 0;
-    padding: 0;
+   ;
 }
 
 #container{
