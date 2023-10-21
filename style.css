@@ -199,7 +199,7 @@ margin-top: 2rem;
   
 @media screen and (max-width: 520px) {
     #container{
-        width: 90%;
+        width: 85%;
     }
     .rules-section{
         width: 90%;
