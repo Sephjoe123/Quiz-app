@@ -145,6 +145,7 @@ function validateAnswers() {
 
 // shows the score result after all questions have been answered
 function updateScore() {
+
   quizContainer.style.display = "none";
   resultModal.classList.remove("none");
   resultModal.classList.add("active");
@@ -155,6 +156,19 @@ function updateScore() {
   let scorePercentage = document.querySelector(".percentage");
   let scoreNumPercentage = (scoreCount / Questions.length) * 100;
   scorePercentage.innerText = scoreNumPercentage.toFixed(2) + "%";
+
+  let resultText=  document.querySelector(".result-modal h1");
+  
+  let resultImg = document.querySelector(".result-modal img")
+
+  scoreNumPercentage < 50 ? resultText.innerText = 
+  "You can do better" : resultText.innerText = "Bravo !!";
+
+  scoreNumPercentage < 50 ? resultImg.setAttribute("src", "images (1).jpg")
+  : resultImg.setAttribute("src", "images/trophy image.jpg");
+
+
+  console.log(resultText)
 }
 
 // allocate 10s for each question to be answere
