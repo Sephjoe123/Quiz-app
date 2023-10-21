@@ -164,8 +164,7 @@ function updateScore() {
   scoreNumPercentage < 50 ? resultText.innerText = 
   "You can do better" : resultText.innerText = "Bravo !!";
 
-  scoreNumPercentage < 50 ? resultImg.setAttribute("src", "images (1).jpg")
-  : resultImg.setAttribute("src", "images/trophy image.jpg");
+  scoreNumPercentage < 50 ? resultImg.setAttribute("src", "images/images (1).jpg") : resultImg.setAttribute("src", "images/trophy image.jpg");
 
 
   console.log(resultText)
