@@ -1,0 +1,125 @@
+
+.login-box{
+    background-color: #fff;
+    width: 25rem;
+    height: 32rem;
+    padding-top: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+.login-box h3{
+    text-align: center;
+    margin-top: -1rem;
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+.password-lost >p:first-child{
+    text-align: center;
+    color: #000;
+    font-size: 0.7rem;
+    position: absolute;
+    right: 30px;
+    margin-top: 0.1rem;
+}
+.password-lost{
+    font-size: 0.85rem;
+    color:  rgb(58, 85, 237);  
+    text-align: center;
+
+}
+.account{
+    position: absolute;
+    left: 85px;
+    bottom: 30px;
+}
+.account .signup{
+    color: #000;
+}
+.password-lost button{
+    width: 92%;
+    padding: 12px;
+    background-color: rgb(58, 85, 237);  
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 40px;
+    font-size: 0.8rem;
+}
+.password-lost button:hover{
+    transform: scale(1.01);
+    transition: ease-in 0.5s;
+}
+.password-lost > p:last-child{
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+.signup{
+    color: rgb(58, 85, 237); 
+}
+.user{
+    position: relative;
+}
+.confirm{
+    position: relative;
+}
+.fa-user,.fa-lock,.fa-check{
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    color:#aaa7a7
+}
+::placeholder{
+    padding-left: 30px;
+}
+.password-area{
+    position: relative;
+}
+
+.book-form input{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    margin: 20px;
+    padding: 12px;
+    border: 2px solid rgb(216, 215, 215); 
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.google-section h4{
+    color: #000;
+    padding-top: 3rem;
+    font-size: 0.75rem;
+    font-weight: 100;
+}
+.google-section img{
+    width: 30px;
+    padding-top: 3px;
+}
+.google-section img:hover{
+    transform: scale(1.05);
+}
+.registration-box{
+    background-color: #fff;
+    width: 25rem;
+    height: 32rem;
+    padding-top: 40px;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+.registration-box h3{
+    text-align:  center;
+    font-size: 1.7rem;
+    margin-top: 0px;
+}
+.registration-box .google-section{
+    margin-top: -2rem;
+}
